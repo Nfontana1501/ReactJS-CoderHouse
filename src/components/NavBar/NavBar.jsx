@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import CartWidget from './CartWidget';
 
+
 const pages = ['Montaña', 'actividades', 'servicios', 'contacto'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 

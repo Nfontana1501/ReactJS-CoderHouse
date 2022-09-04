@@ -1,8 +1,9 @@
 import './App.css';
-import ItemListContainer from './components/ItemListContainer';
-import NavBar from './components/NavBar';
-import Contador from './components/Contador';
-import Asd from './components/Asd';
+import ItemListContainer from './components/IemListContainer/ItemListContainer';
+import NavBar from './components/NavBar/NavBar';
+import Contador from './components/Counter/Contador';
+import FetchListContainer from './components/ItemDetailContainer/ItemDetailContainer';
+
 
 
 function App() {
@@ -18,17 +19,15 @@ function App() {
     <div className="">
         <NavBar />
       
-        <ItemListContainer 
-          color={["red", "blue", "green"]}
-          id={[1,2,3]}
-          clText={clText}
-        />
-        
+        <ItemListContainer />
+
         <Contador 
           stock={10}
           initial={1}
           onAdd={onAdd}
         />
+        
+        <FetchListContainer />
 
     </div>
   );
