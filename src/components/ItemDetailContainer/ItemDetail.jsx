@@ -1,40 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import React from 'react'
+import ItemCount from '../Counter/ItemCount'
 
-export default function ItemDetail({ prod }) {
+export default function ItemDetail ({productDetail}) {
+    const {nombre, descripcion, precio, stock, img}= productDetail
+
+    function onAdd (text){
+        alert(text)
+    }
+    
     return (
-    <>
-
-    <Card sx={{ width: 300, height: 400 , margin: ".5rem", display:"inline-block" }}>
-        <CardActionArea>
-            <CardMedia
-            component="img"
-            height="140"
-            image= {prod.image}
-            alt="product image"
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {prod.title}
-                </Typography>
-                <Typography gutterBottom variant="h6" component="div">
-                    valor: ${prod.price}
-                </Typography>
-                <Typography variant="body1" color="text.secondary">
-                    Categoría: {prod.category}
-                </Typography>
-                <Typography variant="body1" color="text.secondary">
-                    Id: {prod.id}
-                </Typography>
-            </CardContent>
-        </CardActionArea>
-    </Card>
-
-
-    </>
-    );
+        <div className="productContainer">
+            <h2>Detalle de: {nombre}</h2>
+            <img src={img} alt={nombre} style={{width:'25rem'}}/>
+            <p>{descripcion}</p>
+            <p>${precio}</p>
+            <ItemCount stock={stock} initial={1} onAdd={onAdd}/>
+        </div>
+    )
 }

@@ -1,35 +1,25 @@
 import './App.css';
-import ItemListContainer from './components/IemListContainer/ItemListContainer';
 import NavBar from './components/NavBar/NavBar';
-import Contador from './components/Counter/Contador';
-import FetchListContainer from './components/ItemDetailContainer/ItemDetailContainer';
-
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 
 function App() {
-  function clText(text){
-    console.log(text)
-  }
-
-  function onAdd (text){
-    alert(text)
-  }
 
   return (
-    <div className="">
-        <NavBar />
-      
-        <ItemListContainer />
 
-        <Contador 
-          stock={10}
-          initial={1}
-          onAdd={onAdd}
-        />
-        
-        <FetchListContainer />
+    <>
+    <BrowserRouter>
 
-    </div>
+      <NavBar />
+
+      <Routes>
+        <Route path='/' element={<ItemListContainer />} />
+        <Route path='/category/:categoryId' element={<ItemListContainer />}/>
+        <Route path='/product/:id' element={<ItemDetailContainer />}/>
+      </Routes>
+
+    </BrowserRouter></>
   );
 }
 

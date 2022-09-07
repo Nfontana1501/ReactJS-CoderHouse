@@ -21,14 +21,14 @@ const [contador, setContador] = useState(initial)
                     marginBottom: '.5rem',
                 }}
                 variant="contained" 
-                color="success"
-                disabled = {contador === stock}
+                color="error"
+                disabled = {contador === 0}
                 onClick={() => {
-                    setContador(contador + 1)
+                    setContador(contador - 1)
                 }}> 
-                Sumar 
+                - 
                 </Button>
-                
+
                 <Button 
                 style={{
                     marginBottom: '.5rem',
@@ -38,19 +38,20 @@ const [contador, setContador] = useState(initial)
                 > 
                 {contador} 
                 </Button>
-                
+
                 <Button 
                 style={{
                     marginBottom: '.5rem',
                 }}
                 variant="contained" 
-                color="error"
-                disabled = {contador === 0}
+                color="success"
+                disabled = {contador === stock}
                 onClick={() => {
-                    setContador(contador - 1)
+                    setContador(contador + 1)
                 }}> 
-                Restar 
+                + 
                 </Button>
+                
             </div>
 
             <Button
