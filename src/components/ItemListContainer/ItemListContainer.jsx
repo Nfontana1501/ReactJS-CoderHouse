@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {data} from '../Mocks/MockData'
-import { useParams } from 'react-router-dom'
+import {data} from '../Mocks/MockData';
+import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
 
 export default function ItemListContainer() {
+
     const [loading, setLoading] = useState(false);
     const [productList, setProductList]=useState([]);
     const{categoryId}= useParams();
@@ -13,9 +14,9 @@ export default function ItemListContainer() {
             data
             .then((res)=>{
                 if(categoryId){
-                setProductList(res.filter((item)=> item.categoria === categoryId))
+                setProductList(res.filter((item)=> item.categoria === categoryId));
                 }else{
-                setProductList(res)
+                setProductList(res);
                 }
             })
             .catch((error)=> console.log(error))
@@ -26,5 +27,5 @@ export default function ItemListContainer() {
         <div style={{padding:'3rem'}}>
             {loading ? <p>Cargando...</p>:<ItemList productList={productList}/>}
         </div>
-    )
+    );
 }

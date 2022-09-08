@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 
 
 const Contador = ({stock, initial, onAdd}) => {
-const [contador, setContador] = useState(initial)
+
+const [contador, setContador] = useState(initial);
 
     return ( 
         <div

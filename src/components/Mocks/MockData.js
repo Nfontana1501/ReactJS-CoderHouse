@@ -11,16 +11,17 @@ const productos = [
     {id: "10", categoria: "rental", nombre: "Equipo de snowboard", precio: 2500, stock: 100, descripcion:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum quibusdam quos quas pariatur placeat doloribus, eos corporis rerum ut enim quaerat aperiam maiores consequuntur? Nesciunt recusandae magnam minima excepturi debitis!", img: "https://thumbs.dreamstime.com/z/equipo-para-la-snowboard-36383657.jpg"},
     {id: "11", categoria: "rental", nombre: "Equipo de protección personal", precio: 1000, stock: 100, descripcion:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum quibusdam quos quas pariatur placeat doloribus, eos corporis rerum ut enim quaerat aperiam maiores consequuntur? Nesciunt recusandae magnam minima excepturi debitis!", img: "https://shusski.com/blog/wp-content/uploads/02.jpg"},
     {id: "12", categoria: "rental", nombre: "Ropa de nieve", precio: 1750, stock: 100, descripcion:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum quibusdam quos quas pariatur placeat doloribus, eos corporis rerum ut enim quaerat aperiam maiores consequuntur? Nesciunt recusandae magnam minima excepturi debitis!", img: "https://soloski.net/wp-content/uploads/2015/10/images_hm-2015-001.jpg"},
-] 
+];
 
 export const data = new Promise((resolve, reject) => {
 
-    let condition = true
+    let condition = true;
+
     setTimeout(()=> {
         if(condition){
-            resolve(productos)
+            resolve(productos);
         }else{
-            reject('Algo salio mal')
+            reject('Algo salio mal');
         }
-    },3000)
+    },3000);
 })
