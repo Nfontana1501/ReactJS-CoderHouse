@@ -1,6 +1,6 @@
 # E-commerce Cerro Patagonia
 
-Este proyecto esta avocado a crear el sitio de compras de pases y equipamiento del Cerro Patagonia.
+Este proyecto esta avocado a crear el sitio de compras de pases y equipamiento del Cerro Patagonia.<br>
 El sitio se encuentra programado en ReactJS y librerías anexas.
 
 
@@ -8,8 +8,8 @@ El sitio se encuentra programado en ReactJS y librerías anexas.
 
 Para hacer funcionar esta aplicación necesitaras:
 
--Visual Studio Code
--NodeJS
+. Visual Studio Code <br>
+. NodeJS
 
 
 ## Instalación 
@@ -31,7 +31,7 @@ Para la ejecución de pruebas será necesario clonar el repositorio y abrir la c
 
 Para la visualización del contenido:
 
-### `npm init`
+### `npm start`
 
 
 ## Librerías utilizadas
@@ -41,4 +41,4 @@ Material UI
 
 ## Autores
 
-Nicolas Fontana
+Nicolas Fontana - https://github.com/Nfontana1501
