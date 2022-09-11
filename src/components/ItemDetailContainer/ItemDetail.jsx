@@ -1,12 +1,18 @@
-import React from 'react';
 import ItemCount from '../Counter/ItemCount';
+import { useState } from 'react';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export default function ItemDetail ({productDetail}) {
 
+    const [contador, setContador] = useState(1);
+    const [compra, setCompra] = useState(false);
     const {nombre, descripcion, precio, stock, img}= productDetail;
+    const navegar = useNavigate();
 
-    function onAdd (text){
-        alert(text)
+    function onAdd (){
+        alert(`Usted ha seleccionado ${contador} items del producto ${nombre}`)
+        setCompra(true);
     }
     
     return (
@@ -15,7 +21,31 @@ export default function ItemDetail ({productDetail}) {
             <img src={img} alt={nombre} style={{width:"25rem"}}/>
             <p>{descripcion}</p>
             <p>${precio}</p>
-            <ItemCount stock={stock} initial={1} onAdd={onAdd}/>
+            {!compra ?
+            <ItemCount stock={stock} initial={1} onAdd={onAdd} contador={contador} setContador={setContador}/> :
+            <div>
+                <Button 
+                style={{
+                    marginBottom: '.5rem',
+                    marginRight: '.5rem',
+                }}
+                variant="contained" 
+                color="primary"
+                onClick={()=>{navegar("/")}}> 
+                Seguir comprando
+                </Button>
+                <Button 
+                style={{
+                    marginBottom: '.5rem',
+                    marginRight: '.5rem',
+                }}
+                variant="contained" 
+                color="primary"
+                onClick={()=>{navegar("/cart")}}> 
+                Ir al carrito
+                </Button>
+            </div>
+            }
         </div>
-    )
+    );
 }

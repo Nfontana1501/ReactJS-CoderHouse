@@ -1,10 +1,8 @@
 import { Button } from '@mui/material';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 
-const Contador = ({stock, initial, onAdd}) => {
-
-const [contador, setContador] = useState(initial);
+const Contador = ({stock, contador, setContador, onAdd}) => {
 
     return ( 
         <div
