@@ -1,18 +1,28 @@
 import ItemCount from '../Counter/ItemCount';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 
 export default function ItemDetail ({productDetail}) {
 
     const [contador, setContador] = useState(1);
     const [compra, setCompra] = useState(false);
-    const {nombre, descripcion, precio, stock, img}= productDetail;
+    const {nombre, descripcion, precio, stock, img, id}= productDetail;
     const navegar = useNavigate();
+    const {addItem} = useContext(CartContext);
 
     function onAdd (){
-        alert(`Usted ha seleccionado ${contador} items del producto ${nombre}`)
+        let purchase = {
+            id,
+            nombre,
+            precio,
+            stock,
+            img,
+            qty: contador
+        }
         setCompra(true);
+        addItem(purchase);
     }
     
     return (

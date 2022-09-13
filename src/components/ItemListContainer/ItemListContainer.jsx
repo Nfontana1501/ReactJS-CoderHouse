@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {data} from '../Mocks/MockData';
+import {data} from '../../mocks/MockData';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
 
