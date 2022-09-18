@@ -22,9 +22,34 @@ export function CartProvider ({children}) {
         setCart([...cart, item])
     }
 
+    function cartQuantity (){
+        return cart.reduce((acc, prod) => acc += prod.qty, 0)
+    }
+
+    function cartTotal (){
+        return cart.reduce((acc, prod) => acc += prod.precio * prod.qty, 0)
+    }
+
     return(
-        <CartContext.Provider value={{cart, clear, isInCart, removeItem, addItem}}>
+        <CartContext.Provider value={{cart, clear, isInCart, removeItem, addItem, cartQuantity, cartTotal}}>
             {children}
         </CartContext.Provider>
     );
 }
+
+/*const addItem = (item) => {
+    const existsInCart = cart.find((prod)=> prod.id === item.id)
+    if(existsInCart){
+        const carritoActualizado = cart.map((prod)=>{
+            if(prod.id === item.id){
+                return {...prod, quantity:prod.quantity + item.quantity}
+            }else{
+                return prod
+            }
+        })
+        setCart(carritoActualizado )
+    }else{
+        setCart([...cart, item])
+    }
+
+}*/

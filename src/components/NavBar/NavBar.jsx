@@ -123,8 +123,10 @@ export default function NavBar () {
                     </MenuItem>
                 ))}
             </Box>
-            
-            <CartWidget />
+
+            <NavLink to='/cart' className="links">
+                <CartWidget />
+            </NavLink>
 
             </Toolbar>
         </Container>
