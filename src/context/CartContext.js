@@ -19,7 +19,19 @@ export function CartProvider ({children}) {
     }
 
     function addItem (item) {
-        setCart([...cart, item])
+        const existsInCart = cart.find((prod)=> prod.id === item.id)
+        if(existsInCart){
+            const carritoActualizado = cart.map((prod)=>{
+                if(prod.id === item.id){
+                    return {...prod, qty:prod.qty + item.qty}
+                }else{
+                    return prod
+                }
+            })
+            setCart(carritoActualizado )
+        }else{
+            setCart([...cart, item])
+        }
     }
 
     function cartQuantity (){
@@ -36,20 +48,3 @@ export function CartProvider ({children}) {
         </CartContext.Provider>
     );
 }
-
-/*const addItem = (item) => {
-    const existsInCart = cart.find((prod)=> prod.id === item.id)
-    if(existsInCart){
-        const carritoActualizado = cart.map((prod)=>{
-            if(prod.id === item.id){
-                return {...prod, quantity:prod.quantity + item.quantity}
-            }else{
-                return prod
-            }
-        })
-        setCart(carritoActualizado )
-    }else{
-        setCart([...cart, item])
-    }
-
-}*/
