@@ -49,7 +49,8 @@ export default function Cart({}) {
                 <Button 
                     style={{margin:'1rem'}}
                     variant="contained" 
-                    color="success"> 
+                    color="success"
+                    onClick={() => navegar('/checkout')}> 
                 Terminar compra
                 </Button>
                 </div>
