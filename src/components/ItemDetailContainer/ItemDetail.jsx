@@ -18,17 +18,18 @@ export default function ItemDetail ({productDetail}) {
             nombre,
             precio,
             stock,
+            stockActualizado: stock - contador,
             img,
-            qty: contador
+            qty: contador,
         }
         setCompra(true);
         addItem(purchase);
     }
-    
+
     return (
         <div className="productContainer">
             <h2>Detalle de: {nombre}</h2>
-            <img src={img} alt={nombre} style={{width:"25rem"}}/>
+            <img src={img} alt={nombre} style={{width:"20rem"}}/>
             <p>{descripcion}</p>
             <p>${precio}</p>
             {!compra ?
@@ -40,7 +41,7 @@ export default function ItemDetail ({productDetail}) {
                     marginRight: '.5rem',
                 }}
                 variant="contained" 
-                color="primary"
+                color="secondary"
                 onClick={()=>{navegar("/")}}> 
                 Seguir comprando
                 </Button>
@@ -50,7 +51,7 @@ export default function ItemDetail ({productDetail}) {
                     marginRight: '.5rem',
                 }}
                 variant="contained" 
-                color="primary"
+                color="secondary"
                 onClick={()=>{navegar("/cart")}}> 
                 Ir al carrito
                 </Button>

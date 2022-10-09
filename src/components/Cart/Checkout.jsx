@@ -5,6 +5,7 @@ import { CartContext } from '../../context/CartContext';
 import { db } from '../../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
+import { Watch } from  'react-loader-spinner';
 
 export default function Checkout () {
 
@@ -30,63 +31,76 @@ export default function Checkout () {
             setMensaje(false)
             setLoader(true)
             const ventas = collection(db,"orders")
-        addDoc(ventas, {
+            addDoc(ventas, {
             comprador,
             items: cart,
             total: cartTotal(),
             date: serverTimestamp()
-        })
-        .then((res)=>{
-            setOrderId(res.id)
-            clear()
-        })
-        .catch((error)=> console.log(error))
-        .finally(()=> setLoader(false))
+            })
+            .then((res)=>{
+                setOrderId(res.id)
+                clear()
+            })
+            .catch((error)=> console.log(error))
+            .finally(()=> setLoader(false))
         }
-        
     }
 
     if(loader){
-        return <p>Loading...</p>
+        return  <div style={{display: "flex", justifyContent: "center", marginTop: "2%"}}>
+            <Watch height="80" width="80" radius="48"
+            color="#424242"
+            ariaLabel="watch-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+            />
+            </div>
     }
 
     return (
     <div>
         {!orderId 
         ?<div>
-        <h2>Checkout</h2>
-        <h4>Por favor complete todos los campos</h4>
-        <form style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}} onSubmit={finalizarCompra}>
             <div>
-                <label  className="form-label">Nombre Completo</label>
-                <input className="form-control" type="text" placeholder='Nombre y Apellido' name="name" onChange={datosComprador}/>
+                <h2 style={{textAlign: "center"}}>Checkout</h2>
+                <h4 style={{textAlign: "center"}}>Por favor complete todos los campos</h4>
             </div>
-            <div>
-                <label  className="form-label">Numero de telefono</label>
-                <input className="form-control"  type="number" placeholder='1122222222' name="phone"  onChange={datosComprador} />
+            <div className='mainContainer'>
+                <form className='form' onSubmit={finalizarCompra}>
+                    <fieldset className='formFieldset'>
+                        <div className='formContainer'>
+                            <label  className="formLabel">Nombre Completo</label>
+                            <input className="formItem" type="text" placeholder='Nombre y Apellido' name="name" onChange={datosComprador}/>
+                        </div>
+                        <div className='formContainer'>
+                            <label  className="formLabel">Numero de telefono</label>
+                            <input className="formItem"  type="number" placeholder='1122222222' name="phone"  onChange={datosComprador} />
+                        </div>
+                        <div className='formContainer'>
+                            <label  className="formLabel">E-mail</label>
+                            <input className="formItem" type="email" placeholder='example@example.com' name="email"  onChange={datosComprador}/>
+                        </div>
+                        <Button 
+                            style={{margin:'1rem'}}
+                            variant="contained" 
+                            color="secondary"
+                            type = "submit"> 
+                            Terminar compra
+                        </Button>
+                        {mensaje && <p style={{color:'red'}}> Por favor complete todos los campos</p>}
+                    </fieldset>
+                </form>
             </div>
-            <div>
-                <label  className="form-label">E-mail</label>
-                <input className="form-control" type="email" placeholder='example@example.com' name="email"  onChange={datosComprador}/>
-            </div>
-            <Button 
-                style={{margin:'1rem'}}
-                variant="contained" 
-                color="success"
-                type = "submit"> 
-                Terminar compra
-            </Button>
-            {mensaje && <p style={{color:'red'}}> Por favor complete todos los campos</p>}
-        </form>
         </div>
         :
-        <div>
-        <h2>Muchas gracias por su compra!</h2>
-        <h4>Su orden es: {orderId}</h4>
+        <div style={{display: "flex", justifyContent: "space-between", flexDirection: "column", alignItems: "center"}}>
+        <h2 style={{textAlign: "center"}}>Muchas gracias por su compra!</h2>
+        <h4 style={{textAlign: "center"}}>Su orden es: {orderId}</h4>
         <Button 
-            style={{margin:'1rem'}}
+            style={{margin:'1rem', width: "10%"}}
             variant="outlined" 
-            color="success"
+            color="secondary"
             onClick={()=> navigate('/')}> 
             Volver
         </Button>

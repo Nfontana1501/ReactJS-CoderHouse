@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ItemDetail from './ItemDetail';
-import {data} from '../../mocks/MockData';
 import { useParams } from 'react-router-dom';
 import { collection, getDoc, doc} from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
+import { Watch } from  'react-loader-spinner';
 
 
 export default function ItemDetailContainer() {
@@ -12,15 +12,6 @@ export default function ItemDetailContainer() {
     const [loading, setLoading]= useState(true);
     const{id}=useParams();
 
-    // ESTE ERA EL QUE USABA CON MOCK
-    /*useEffect(()=>{
-        data
-        .then((res)=> setProductDetail(res.find((item)=> item.id === id)))
-        .catch((error)=> console.log(error))
-        .finally(()=> setLoading(false))
-    },[id])*/
-
-    // ESTE ES EL QUE USO CON FIREBASE
     useEffect(()=>{
         const coleccionProductos = collection(db, "products");
         const referenciaDoc = doc(coleccionProductos, id);
@@ -37,7 +28,17 @@ export default function ItemDetailContainer() {
 
     return (
     <div>
-        {loading ? <p>Cargando...</p> : <ItemDetail productDetail={productDetail}/>}
+        {loading 
+        ?<div style={{display: "flex", justifyContent: "center", marginTop: "2%"}}>
+        <Watch height="80" width="80" radius="48"
+        color="#424242"
+        ariaLabel="watch-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+        />
+        </div>
+        : <ItemDetail productDetail={productDetail}/>}
     </div>
     )
 }

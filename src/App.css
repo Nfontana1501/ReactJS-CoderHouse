@@ -13,7 +13,7 @@
   border: none;
   border-radius: 5px;
   color: white;
-  background-color: #125688;
+  background-color: #424242;
 }
 
 .btn:hover{
@@ -50,6 +50,44 @@
   height: 250px;
 }
 
+.mainContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.form{
+  width: 50%;
+  margin: 0% 0 5% 0;
+  padding: 3% 7% 3% 7%;
+  border: 1px solid #CED5D7;
+  border-radius: 2%;
+  background-color: white;
+  box-shadow: 0px 5px 10px #B5C1C5, 0 0 0 10px #424242 inset;
+  height: 100%;
+}
+
+.formFieldset{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10% 10% 10% 10%;
+}
+
+.formLabel{
+  display: block;
+}
+
+.formContainer{
+  margin-bottom: 5%;
+  width: 100%;
+}
+
+.formItem{
+  width: 100%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -69,6 +107,18 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.colored-toast.swal2-icon-success {
+  background-color: #a5dc86 !important;
+}
+
+.colored-toast.swal2-icon-error {
+  background-color: #f27474 !important;
+}
+
+.colored-toast.swal2-icon-warning {
+  background-color: #f8bb86 !important;
 }
 
 @keyframes App-logo-spin {

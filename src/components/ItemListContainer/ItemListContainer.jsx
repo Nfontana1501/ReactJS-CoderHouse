@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-//import {data} from '../../mocks/MockData';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
+import { Watch } from  'react-loader-spinner';
 
 export default function ItemListContainer() {
 
@@ -11,22 +11,6 @@ export default function ItemListContainer() {
     const [productList, setProductList]=useState([]);
     const{categoryId}= useParams();
 
-    // ESTE ERA EL QUE USABA CON MOCK
-    /*useEffect(()=>{
-        setLoading(true)
-            data
-            .then((res)=>{
-                if(categoryId){
-                setProductList(res.filter((item)=> item.categoria === categoryId));
-                }else{
-                setProductList(res);
-                }
-            })
-            .catch((error)=> console.log(error))
-            .finally(()=> setLoading(false))
-        }, [categoryId])*/
-
-    // ESTE ES EL QUE USO CON FIREBASE
     useEffect(()=>{
         setLoading(true);
         const productos = categoryId ?query(collection(db, "products"), where("categoria", "==", categoryId)) : collection(db, "products")
@@ -46,7 +30,17 @@ export default function ItemListContainer() {
 
     return (
         <div style={{padding:'3rem'}}>
-            {loading ? <p>Cargando...</p>:<ItemList productList={productList}/>}
+            {loading 
+            ? <div style={{display: "flex", justifyContent: "center", marginTop: "2%"}}>
+            <Watch height="80" width="80" radius="48"
+            color="#424242"
+            ariaLabel="watch-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+            />
+            </div>
+            :<ItemList productList={productList}/>}
         </div>
     );
 }

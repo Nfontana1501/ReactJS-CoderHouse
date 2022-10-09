@@ -14,15 +14,16 @@ export default function Cart({}) {
     <div>
         {
             !cart.length 
-            ?<div>
-                <h2>Tu carrito esta vacio!</h2>
-                <h4>Te invitamos a ver nuestros productos</h4>
+            ?<div style={{display: "flex", justifyContent: "space-between", flexDirection: "column", alignItems: "center"}}>
+                <h2 style={{textAlign: "center"}}>Tu carrito esta vacio!</h2>
+                <h4 style={{textAlign: "center"}}>Te invitamos a ver nuestros productos</h4>
                 <Button 
                 style={{
                     marginBottom: '.5rem',
+                    width: "10%"
                 }}
-                variant="contained" 
-                color="success"
+                variant="outlined" 
+                color="secondary"
                 onClick={() => navegar('/')}> 
                 Ir a comprar
                 </Button>
@@ -42,14 +43,14 @@ export default function Cart({}) {
                 <Button
                     style={{margin:'1rem'}}
                     variant="contained" 
-                    color="error"
+                    color="secondary"
                     onClick={clear}> 
                 Vaciar carrito
                 </Button>
                 <Button 
                     style={{margin:'1rem'}}
                     variant="contained" 
-                    color="success"
+                    color="secondary"
                     onClick={() => navegar('/checkout')}> 
                 Terminar compra
                 </Button>

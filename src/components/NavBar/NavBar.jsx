@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import DownhillSkiingIcon from '@mui/icons-material/DownhillSkiing';
 import CartWidget from './CartWidget';
 import { NavLink } from 'react-router-dom';
 
@@ -36,10 +37,12 @@ export default function NavBar () {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" color="secondary">
         <Container maxWidth="xl">
             <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 3 }} />
+            <NavLink to='/' className="links" >
+                <img sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} style={{height: "50px", width: "50px", marginRight: "1rem"}} src={"https://backcountrypatagonia.com/wp-content/uploads/2022/03/cropped-favicon.png"} />
+            </NavLink>
             <NavLink to='/' className="links">
                 <Typography
                     variant="h6"
@@ -95,7 +98,6 @@ export default function NavBar () {
                 ))}
                 </Menu>
             </Box>
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
             <NavLink to='/' className="links">
             <Typography
                 variant="h5"
@@ -111,6 +113,7 @@ export default function NavBar () {
                 letterSpacing: '.3rem',
                 color: 'inherit',
                 textDecoration: 'none',
+                justifyContent: 'center',
                 }}
             >
                 CERRO PATAGONIA

@@ -1,7 +1,6 @@
 import { Button } from '@mui/material';
 import React from 'react';
 
-
 const Contador = ({stock, contador, setContador, onAdd}) => {
 
     return ( 
@@ -58,11 +57,11 @@ const Contador = ({stock, contador, setContador, onAdd}) => {
                 marginTop: '1rem',
             }} 
             variant="contained" 
-            color="primary"
+            color="secondary"
             onClick={() => {
-                onAdd(`la cantidad de items seleccionada ha sido de ${contador}`);
+                onAdd();
             }}> 
-            Comprar 
+            Agregar al carrito
             </Button>
 
         </div>
