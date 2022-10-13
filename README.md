@@ -2,11 +2,13 @@
 
 Este proyecto esta avocado a crear el sitio de compras de pases y equipamiento del Cerro Patagonia.<br>
 El sitio se encuentra programado en ReactJS y librerías anexas.
-
+<br/>
+<br/>
+Puede ver el proyecto deployado en el siguiente link <a>https://cerropatagonia-ecf13.web.app/</a>
 
 ## Pre-requisitos
 
-Para hacer funcionar esta aplicación necesitaras:
+Si deseas hacer funcionar esta aplicación necesitaras:
 
 . Visual Studio Code <br>
 . NodeJS
@@ -34,10 +36,15 @@ Para la visualización del contenido:
 ### `npm start`
 
 
-## Librerías utilizadas
+## Librerías y dependencias utilizadas
 
-Material UI
-
+<ul>
+<li>ReactJS
+<li>React Router DOM
+<li>Firebase
+<li>Material UI
+<li>Sweet Alert 2
+</ul>
 
 ## Autores
 
